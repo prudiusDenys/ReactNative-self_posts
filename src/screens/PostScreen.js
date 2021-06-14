@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { View, Text, StyleSheet, Image, Button, ScrollView, Alert } from 'react-native'
 import { DATA } from '../data'
 import { THEME } from '../theme'
+import { HeaderButtons, Item } from 'react-navigation-header-buttons'
+import { AppHeaderIcon } from '../components/AppHeaderIcon'
 
 export const PostScreen = ({ navigation }) => {
 
@@ -11,27 +13,27 @@ export const PostScreen = ({ navigation }) => {
 
   const removeHandler = () => {
     Alert.alert(
-      "Delete the post",
-      "Are you sure you want to delete this post?",
+      'Delete the post',
+      'Are you sure you want to delete this post?',
       [
         {
-          text: "Cancel",
-          style: "cancel",
+          text: 'Cancel',
+          style: 'cancel',
         },
         {
-          text: "Delete",
+          text: 'Delete',
           onPress: () => {},
-          style: "destructive",
+          style: 'destructive',
         },
       ],
       {
         cancelable: false,
         onDismiss: () =>
           Alert.alert(
-            "This alert was dismissed by tapping outside of the alert dialog."
+            'This alert was dismissed by tapping outside of the alert dialog.'
           ),
       }
-    );
+    )
   }
   return (
     <ScrollView>
@@ -47,12 +49,23 @@ export const PostScreen = ({ navigation }) => {
 PostScreen.navigationOptions = ({ navigation }) => {
   // receive data by key 'date' and pass it to header
   const date = navigation.getParam('date')
+  const booked = navigation.getParam('booked')
+  const iconName = booked ? 'ios-star' : 'ios-star-outline'
   return {
     headerTitle: 'Post ' + new Date(date).toLocaleDateString(),
     // headerStyle: {
     //   backgroundColor: 'red'
     // },
     // headerTintColor: '#fff'
+    headerRight: () => {
+      return (
+        <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
+          <Item title={'Take photo'}
+                iconName={iconName}
+                onPress={() => console.log('press photo')}/>
+        </HeaderButtons>
+      )
+    },
   }
 }
 
