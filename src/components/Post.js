@@ -2,7 +2,6 @@ import React from 'react'
 import { View, StyleSheet, ImageBackground, Text, TouchableOpacity } from 'react-native'
 
 export const Post = ({ post, onOpen }) => {
-  debugger
   return (
     <TouchableOpacity activeOpacity={0.7} onPress={() => onOpen(post)}>
       <View style={styles.post}>
