@@ -87,7 +87,7 @@ PostScreen.navigationOptions = ({ navigation }) => {
         <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
           <Item title={'Take photo'}
                 iconName={iconName}
-                onPress={() => toggleHandler}/>
+                onPress={toggleHandler}/>
         </HeaderButtons>
       )
     },
