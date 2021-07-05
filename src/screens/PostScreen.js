@@ -16,8 +16,8 @@ export const PostScreen = ({ navigation }) => {
   const post = useSelector(state => state.post.allPosts.find(post => post.id === postId))
 
   const toggleHandler = useCallback(() => {
-    dispatch(toggleBookedAC(postId))
-  }, [dispatch, postId])
+    dispatch(toggleBookedAC(post))
+  }, [dispatch, post])
 
   useEffect(() => {
     navigation.setParams({ booked })
@@ -93,11 +93,10 @@ PostScreen.navigationOptions = ({ navigation }) => {
     },
   }
 }
-
 const styles = StyleSheet.create({
   image: {
     width: '100%',
-    height: 200,
+    height: 400,
   },
   textWrap: {
     padding: 10

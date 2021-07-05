@@ -18,17 +18,18 @@ export const Post = ({ post, onOpen }) => {
 const styles = StyleSheet.create({
   post: {
     marginBottom: 15,
-    overflow: 'hidden'
+    overflow: 'hidden',
+    height: 400
   },
   image: {
     width: '100%',
-    height: 200
+    height: '100%'
   },
   textWrap: {
     backgroundColor: 'rgba(0,0,0,0.5)',
     paddingVertical: 5,
     alignItems: 'center',
-    width: '100%'
+    width: '100%',
   },
   title: {
     color: '#fff',

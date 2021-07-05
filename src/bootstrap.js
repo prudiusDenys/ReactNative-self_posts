@@ -1,9 +1,17 @@
 import * as Font from 'expo-font'
+import { DB } from './db'
 
 // load custom fonts
 export async function bootstrap () {
-  await Font.loadAsync({
-    'open-bold': require('../assets/fonts/OpenSans-Bold.ttf'),
-    'open-regular': require('../assets/fonts/OpenSans-Regular.ttf')
-  })
+  try {
+    await Font.loadAsync({
+      'open-bold': require('../assets/fonts/OpenSans-Bold.ttf'),
+      'open-regular': require('../assets/fonts/OpenSans-Regular.ttf')
+    })
+    await DB.init()
+    console.log('Database started...')
+  } catch (e) {
+    console.log('Error', e)
+  }
+
 }
